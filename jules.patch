@@ -1,91 +1,226 @@
 diff --git a/app/tests/verify.spec.ts b/app/tests/verify.spec.ts
-index 9b5ce00..71f84fe 100644
+index 71f84fe..de41914 100644
 --- a/app/tests/verify.spec.ts
 +++ b/app/tests/verify.spec.ts
-@@ -13,9 +13,8 @@ test('Keepsake App Flow Verification', async ({ page }) => {
+@@ -8,6 +8,14 @@ test('Keepsake App Flow Verification', async ({ page }) => {
+   const input = page.getByPlaceholder('What did they say today?');
+   await expect(input).toBeVisible();
+   await expect(input).toBeEmpty();
++  
++  // Verify helper text
++  const helperText = page.getByText('Press Enter to capture', { exact: false });
++  await expect(helperText).toBeVisible();
++  
++  // Verify return icon (by checking the material icon text)
++  const returnIcon = page.locator('span.material-symbols-outlined');
++  await expect(returnIcon).toContainText('keyboard_return');
+ 
+   // 3. They type: "I don't want to wear the blue socks, they are too spicy."
    const quote = "I don't want to wear the blue socks, they are too spicy.";
-   await input.fill(quote);
- 
--  // 4. They press the singular button labeled "Preserve."
--  const preserveButton = page.getByRole('button', { name: 'Preserve' });
--  await preserveButton.click();
-+  // 4. They press Enter to preserve the quote.
-+  await page.keyboard.press('Enter');
- 
-   // 5. The quote is gently appended to a chronological, text-only feed below the input.
-   const feed = page.getByTestId('quote-feed');
+diff --git a/package-lock.json b/package-lock.json
+index a8b2788..930690d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -80,7 +80,6 @@
+       "integrity": "sha512-CGOfOJqWjg2qW/Mb6zNsDm+u5vFQ8DxXfbM09z69p5Z6+mE1ikP2jUXw+j42Pf1XTYED2Rni5f95npYeuwMDQA==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@babel/code-frame": "^7.29.0",
+         "@babel/generator": "^7.29.0",
+@@ -349,7 +348,6 @@
+       "resolved": "https://registry.npmjs.org/@dnd-kit/core/-/core-6.3.1.tgz",
+       "integrity": "sha512-xkGBRQQab4RLwgXxoqETICr6S5JlogafbhNsidmrkVv2YRs5MLwpjoF2qpiGjQt8S9AoxtIV603s0GIUpY5eYQ==",
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@dnd-kit/accessibility": "^3.1.1",
+         "@dnd-kit/utilities": "^3.2.2",
+@@ -1296,7 +1294,6 @@
+       "integrity": "sha512-oH72nZRfDv9lADUBSo104Aq7gPHpQZc4BTx38r9xf9pg5LfP6EzSyH2n7qFmmxRQXh7YlUXODcYsg6PuTDSxGg==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "undici-types": "~7.16.0"
+       }
+@@ -1307,7 +1304,6 @@
+       "integrity": "sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==",
+       "devOptional": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "csstype": "^3.2.2"
+       }
+@@ -1367,7 +1363,6 @@
+       "integrity": "sha512-IgSWvLobTDOjnaxAfDTIHaECbkNlAlKv2j5SjpB2v7QHKv1FIfjwMy8FsDbVfDX/KjmCmYICcw7uGaXLhtsLNg==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@typescript-eslint/scope-manager": "8.56.0",
+         "@typescript-eslint/types": "8.56.0",
+@@ -1632,7 +1627,6 @@
+       "integrity": "sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "bin": {
+         "acorn": "bin/acorn"
+       },
+@@ -1778,7 +1772,6 @@
+         }
+       ],
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "baseline-browser-mapping": "^2.9.0",
+         "caniuse-lite": "^1.0.30001759",
+@@ -1993,7 +1986,6 @@
+       "integrity": "sha512-LEyamqS7W5HB3ujJyvi0HQK/dtVINZvd5mAAp9eT5S/ujByGjiZLCzPcHVzuXbpJDJF/cxwHlfceVUDZ2lnSTw==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@eslint-community/eslint-utils": "^4.8.0",
+         "@eslint-community/regexpp": "^4.12.1",
+@@ -2965,7 +2957,6 @@
+       "integrity": "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "engines": {
+         "node": ">=12"
+       },
+@@ -3039,7 +3030,6 @@
+         }
+       ],
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "nanoid": "^3.3.11",
+         "picocolors": "^1.1.1",
+@@ -3081,7 +3071,6 @@
+       "resolved": "https://registry.npmjs.org/react/-/react-19.2.4.tgz",
+       "integrity": "sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==",
+       "license": "MIT",
+-      "peer": true,
+       "engines": {
+         "node": ">=0.10.0"
+       }
+@@ -3091,7 +3080,6 @@
+       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.2.4.tgz",
+       "integrity": "sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ==",
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "scheduler": "^0.27.0"
+       },
+@@ -3350,7 +3338,6 @@
+       "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+       "dev": true,
+       "license": "Apache-2.0",
+-      "peer": true,
+       "bin": {
+         "tsc": "bin/tsc",
+         "tsserver": "bin/tsserver"
+@@ -3437,7 +3424,6 @@
+       "integrity": "sha512-RHX7IvsJlEfjyA1rS7MY0UsmF91etdLAamslHR5lfuO3W/BXRdXm2tRE64ztpSPZbKqB4wAAZ0AwtF6QzfKZLA==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@oxc-project/runtime": "0.114.0",
+         "lightningcss": "^1.31.1",
+@@ -3563,7 +3549,6 @@
+       "integrity": "sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "funding": {
+         "url": "https://github.com/sponsors/colinhacks"
+       }
+diff --git a/playwright-report/index.html b/playwright-report/index.html
+index 4d07b7b..45476b3 100644
+--- a/playwright-report/index.html
++++ b/playwright-report/index.html
+@@ -82,4 +82,4 @@ Error generating stack: `+a.message+`
+     <div id='root'></div>
+   </body>
+ </html>
+-<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,UEsDBBQAAAgIAM51WVw28h5ARQUAAAwbAAAZAAAAZjdiMjE2MzY5ZTJiNTcxZmQwNmMuanNvbs1ZYW+jNhj+K5a/JJUoB4aQwGma2mqnVbudTnfZTdql0znwkrCCzbBpG3X575Md7kIoLCSX3q1fajB+eP348euXJ484TlK4jnCA4/Gc2J7j+UDmo7EdR5YXYkP3v6EZ4ADfQZHEK1PkEJpSYANLEFLg4OOjbnWinFPHt2MS+zQMPdf3RnbsOWp4IlOF+wtALugtoIs8R69Sfo8+qDclIZUJZ9jAecH/glBWYYTLgmdJmWEDp7x6JnjUgbYFmSYMcOAYOORpmTEc2GsDR2VRDXRdzzMwZYxLfUfN58bAki6qFi9lyPWL4SGHUEKkIqJyuekuQJRpxUITVUhayGmiBxOLeOcWOSejKbED1wsIMV2f/IEVhCxWOLDUAMgrQituLiHmBaCfOb9Vk9mPOFGI20Bs33fbcF8lD7IsAM3wvOD3AooZ7gE/sq0GvGf5bfCvacnCJaqweyF7T5CdLfKNgamUNFxmwGR1I+QlkziwDSxukzyHCAcxTQWsD3rYaOMk5EzCg+zBiWvahDQpb2PkqgAqAVXIvXCbjLjfjY+cLqAfGW6DDGfUKuuKDYXbC3XUQHXH34KLY4l7Q++ShZqf5GiGX0C45L3Yc/3GkjvOZM9E+2fAUS0DuuvuiRhYMHUtcYDRrLQse/7RtzKEXPRPden4GUK1vhcvkG2i6RJQKaAwEDwsaSkkRIjGEgoUJ4ym6QrlpZQJWyC5hKRAkkdRCuo/EilAbiBW8SbUPbkEdA9zRPM8rY4CxFk1Nl9yBuY2nBnbCXXUHqrjZfSeJrLWp5VdXTpZDXHBJR9+viTZQK/iYNt/th31sjMOtBPH56adVS1bP/Ll78/qNiFZDXHTsprQXh0a19X3kz6m0AxLfgkfEpHMU5hhtAB5uXqb0hCWPI2gGA5+X1KJoiRSnK6QoCu1JHT14+Bsr1bH5mQy3tUqsSankqq/lSpxjpHqpHP9Q85Eff0TlpcSbdfyh17aaFJZ00knqQdKx+8t4U1ZMtQzOWuNtyaE4TPo9igB29aJJ/hTlstVx/S694cederdMTEtv7E7/FPtDdv62s3xPZX1TVf9O4ja7szKr5I0RTN8jSLOBhLdUybVKXcPtNBH3TwtAQke3gpjozhaqPqBI5En4co8vURtq/Gp4J0sf6tK9UutMTpCo7bTO4H/XXIJHQl8m5a/hvgnq/6fAu+okloErpXdKuw4SdOhnthzCPsgQY86BX2VJuHtRpTveArDwbyUkrOBgR4RoxkEaPC2AAHFHQzQupcix82kaZ1MkZNa1jym+rXHvRWZV7O+1HwcVVtoQmtFRUVtmxKNGuiG+G1f0LoXtstS6173yt7dddWTunqHhNaZhkpAz5q6D5O636eivuJM0oRNtTuwUf9Ue1/Dgd6w5zFA1Cv/Es/fVfvJvvQIqYmdHCF2YvcWu5ruURKvWKvJssbfYbUyIYcWFeolXTVFbYWfLwcfoU/idOrzfVgAMLHk+32liUmaWZaM9xhtByhv8pUmA+lIsxuT4erd9fT66uJ1gC6kPruBRYjHuqkcaDTc+A3qmgoBhTZ0UU6FODPQipfo19/eT5FUXjNF4gtrnzFoKJM7QDFQ7XuVQpkVn7SGtJrN7ZDhI1IecIAGcJdEwEIwc7ZQB93LT52+BDkgf3Ztnich7E33OwEemvKf0cIgux8iHeHsCP1CL28/M3xijkbOrtLdVmf2YJtTITcMyT2FynO5zyqSpmVIWv3WlIv+5vPEHHkNH5d4/zvD9cbAUBS8qJ4TkspS4ACr7a5/pHnyo04DWyHwWxzIooT1zfpfUEsDBBQAAAgIAM51WVwGIIU1WQEAAKgCAAALAAAAcmVwb3J0Lmpzb26tUcFunDAU/JXVO7urZQETfOslUlWppyg9VHt4ax7FwWDLfiRdIf69MhBtDumttxn7eWbeeIaBGBtkBDUDap7Q/nShpxBBZYuAyBj4yQwEKquq86ks64fTQyYFNFNANm4EVdVFcSzzSkBrLEVQv+YVfWtAQVtdz5nMZU3na1llbXOSGrbJH5hk4ZWCaW/H6EkfOYIApsibSkL/VPmCeZ2157ZGrWVRyzJrZZ6eG7ZJ9zuRj9jT4av3h0fr3g7PycnoLbYAH9wLad5j6C64wUwDCLBun1HbIp+FtGYkULkA7ew0jFtb906KQkoBOI6O15O0z0UA4+8duYm1W43pjyfN1KREyN1+3YPiMJGAQHGyex/IjLobaFz5Zbksl/WLEp2BHaMFlYm7ZCLTeKcnAa3F/rai2Bvv99N3vyUpfigm+dyr+e9uAigEF9478XtV8yJgQN2ZkbZF/wJQSwECPwMUAAAICADOdVlcNvIeQEUFAAAMGwAAGQAAAAAAAAAAAAAAtIEAAAAAZjdiMjE2MzY5ZTJiNTcxZmQwNmMuanNvblBLAQI/AxQAAAgIAM51WVwGIIU1WQEAAKgCAAALAAAAAAAAAAAAAAC0gXwFAAByZXBvcnQuanNvblBLBQYAAAAAAgACAIAAAAD+BgAAAAA=</script>
+\ No newline at end of file
++<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
+\ No newline at end of file
 diff --git a/src/components/keepsake/KeepsakeApp.tsx b/src/components/keepsake/KeepsakeApp.tsx
-index 5ec6057..5c9bfbc 100644
+index 5c9bfbc..01e02de 100644
 --- a/src/components/keepsake/KeepsakeApp.tsx
 +++ b/src/components/keepsake/KeepsakeApp.tsx
 @@ -69,13 +69,13 @@ export default function KeepsakeApp() {
    }, [text]);
  
    return (
--    <div className="bg-paper-texture font-serif text-charcoal min-h-screen antialiased selection:bg-[#D3CFC0] selection:text-charcoal flex flex-col items-center pt-24 pb-32">
--      <main className="w-full max-w-3xl px-8 flex flex-col gap-16">
--        <div className="w-full relative">
-+    <div className="fixed inset-0 z-50 overflow-y-auto bg-paper-texture font-serif text-charcoal antialiased selection:bg-[#D3CFC0] selection:text-charcoal flex flex-col items-center">
-+      <main className="w-full max-w-xl mx-auto px-6 py-24 flex flex-col gap-12">
-+        <div className="w-full relative flex flex-col gap-6">
+-    <div className="fixed inset-0 z-50 overflow-y-auto bg-paper-texture font-serif text-charcoal antialiased selection:bg-[#D3CFC0] selection:text-charcoal flex flex-col items-center">
++    <div className="fixed inset-0 z-50 overflow-y-auto bg-warm-parchment bg-[image:var(--background-image-paper-texture)] font-serif text-charcoal-ink antialiased selection:bg-faded-sand selection:text-charcoal-ink flex flex-col items-center">
+       <main className="w-full max-w-xl mx-auto px-6 py-24 flex flex-col gap-12">
+-        <div className="w-full relative flex flex-col gap-6">
++        <div className="w-full relative flex flex-col gap-8 items-center">
            <textarea
              ref={textareaRef}
              autoFocus
--            className="w-full bg-transparent border-none text-4xl md:text-5xl lg:text-6xl font-normal text-charcoal placeholder:text-stone placeholder:opacity-60 placeholder:italic focus:placeholder:opacity-30 focus:ring-0 resize-none p-0 leading-tight outline-none"
-+            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal placeholder:text-stone placeholder:opacity-50 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none"
+-            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal placeholder:text-stone placeholder:opacity-50 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none"
++            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none text-center placeholder:text-center"
              placeholder="What did they say today?"
              rows={1}
              style={{ minHeight: '3em' }}
-@@ -84,40 +84,27 @@ export default function KeepsakeApp() {
+@@ -84,22 +84,23 @@ export default function KeepsakeApp() {
              onKeyDown={handleKeyDown}
            />
            
--          <div className="mt-4 flex items-center justify-between">
--            <div className="flex items-center gap-2 text-xs text-stone tracking-widest uppercase opacity-80">
--              <span className="material-symbols-outlined text-[14px]">keyboard_return</span>
--              <span>Press Enter to capture</span>
-+          <div className="flex items-center justify-between">
-+            <div className="text-sm text-stone font-serif italic opacity-60">
-+              Press Enter to capture
+-          <div className="flex items-center justify-between">
+-            <div className="text-sm text-stone font-serif italic opacity-60">
+-              Press Enter to capture
++          <div className="flex flex-col items-center gap-6 w-full">
++            <div className="text-xs tracking-widest uppercase font-serif italic text-charcoal-ink/50 flex items-center gap-2">
++              <span>Press Enter to capture</span>
++              <span className="material-symbols-outlined text-sm font-light">keyboard_return</span>
              </div>
--            
--            <button 
--              onClick={handlePreserve}
--              className="text-xs text-stone tracking-widest uppercase opacity-80 hover:opacity-100 transition-opacity"
--              aria-label="Preserve"
--            >
--              Preserve
--            </button>
++            
++            <div className="w-full h-px bg-charcoal-ink/10"></div>
            </div>
-           
--          <div className="absolute -bottom-8 left-0 w-full h-px bg-stone/20"></div>
-+          <div className="w-full h-px bg-stone/20"></div>
+-          
+-          <div className="w-full h-px bg-stone/20"></div>
          </div>
  
--        <div className="flex flex-col gap-14 mt-8" data-testid="quote-feed">
-+        <div className="flex flex-col gap-12" data-testid="quote-feed">
+         <div className="flex flex-col gap-12" data-testid="quote-feed">
            {quotes.map((quote) => (
--            <article key={quote.id} className="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
--              <div className="flex flex-col gap-2">
--                <time className="text-sm text-stone font-semibold tracking-wide italic mb-1">
--                  {getRelativeTime(quote.timestamp)}
--                </time>
--                <p className="text-2xl md:text-3xl font-normal leading-snug text-charcoal group-hover:text-black transition-colors duration-500">
--                  {quote.text}
--                </p>
--              </div>
-+            <article key={quote.id} className="group flex flex-col gap-2">
-+              <time className="text-sm text-stone font-serif italic opacity-80">
-+                {getRelativeTime(quote.timestamp)}
-+              </time>
-+              <p className="text-xl md:text-2xl font-normal leading-snug text-charcoal">
-+                {quote.text}
-+              </p>
+-            <article key={quote.id} className="group flex flex-col gap-2">
+-              <time className="text-sm text-stone font-serif italic opacity-80">
++            <article key={quote.id} className="group flex flex-col gap-2 items-center text-center">
++              <time className="text-sm text-charcoal-ink/60 font-serif italic">
+                 {getRelativeTime(quote.timestamp)}
+               </time>
+-              <p className="text-xl md:text-2xl font-normal leading-snug text-charcoal">
++              <p className="text-xl md:text-2xl font-normal leading-snug text-charcoal-ink">
+                 {quote.text}
+               </p>
              </article>
-           ))}
-         </div>
--        
--        <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-linen to-transparent pointer-events-none"></div>
-       </main>
-     </div>
-   );
+diff --git a/src/index.css b/src/index.css
+index 8ce6e47..87d646a 100644
+--- a/src/index.css
++++ b/src/index.css
+@@ -17,6 +17,13 @@
+ 
+   --shadow-neon-cyan: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+   --shadow-neon-magenta: 0 0 10px rgba(255, 0, 85, 0.5), 0 0 20px rgba(255, 0, 85, 0.3);
++
++  /* Keepsake Theme */
++  --color-warm-parchment: #F0EAD6;
++  --color-charcoal-ink: #2C2C2C;
++  --color-faded-sand: #E6DDD0;
++  --font-serif: "Crimson Pro", serif;
++  --background-image-paper-texture: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjRjBFQUQ2Ii8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNFNkRERDAiLz4KPC9zdmc+');
+ }
+ 
+ /* Custom Utilities */

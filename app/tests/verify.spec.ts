@@ -8,6 +8,14 @@ test('Keepsake App Flow Verification', async ({ page }) => {
   const input = page.getByPlaceholder('What did they say today?');
   await expect(input).toBeVisible();
   await expect(input).toBeEmpty();
+  
+  // Verify helper text
+  const helperText = page.getByText('Press Enter to capture', { exact: false });
+  await expect(helperText).toBeVisible();
+  
+  // Verify return icon (by checking the material icon text)
+  const returnIcon = page.locator('span.material-symbols-outlined');
+  await expect(returnIcon).toContainText('keyboard_return');
 
   // 3. They type: "I don't want to wear the blue socks, they are too spicy."
   const quote = "I don't want to wear the blue socks, they are too spicy.";
