@@ -13,9 +13,8 @@ test('Keepsake App Flow Verification', async ({ page }) => {
   const quote = "I don't want to wear the blue socks, they are too spicy.";
   await input.fill(quote);
 
-  // 4. They press the singular button labeled "Preserve."
-  const preserveButton = page.getByRole('button', { name: 'Preserve' });
-  await preserveButton.click();
+  // 4. They press Enter to preserve the quote.
+  await page.keyboard.press('Enter');
 
   // 5. The quote is gently appended to a chronological, text-only feed below the input.
   const feed = page.getByTestId('quote-feed');

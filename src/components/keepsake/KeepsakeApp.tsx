@@ -69,13 +69,13 @@ export default function KeepsakeApp() {
   }, [text]);
 
   return (
-    <div className="bg-paper-texture font-serif text-charcoal min-h-screen antialiased selection:bg-[#D3CFC0] selection:text-charcoal flex flex-col items-center pt-24 pb-32">
-      <main className="w-full max-w-3xl px-8 flex flex-col gap-16">
-        <div className="w-full relative">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-paper-texture font-serif text-charcoal antialiased selection:bg-[#D3CFC0] selection:text-charcoal flex flex-col items-center">
+      <main className="w-full max-w-xl mx-auto px-6 py-24 flex flex-col gap-12">
+        <div className="w-full relative flex flex-col gap-6">
           <textarea
             ref={textareaRef}
             autoFocus
-            className="w-full bg-transparent border-none text-4xl md:text-5xl lg:text-6xl font-normal text-charcoal placeholder:text-stone placeholder:opacity-60 placeholder:italic focus:placeholder:opacity-30 focus:ring-0 resize-none p-0 leading-tight outline-none"
+            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal placeholder:text-stone placeholder:opacity-50 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none"
             placeholder="What did they say today?"
             rows={1}
             style={{ minHeight: '3em' }}
@@ -84,40 +84,27 @@ export default function KeepsakeApp() {
             onKeyDown={handleKeyDown}
           />
           
-          <div className="mt-4 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs text-stone tracking-widest uppercase opacity-80">
-              <span className="material-symbols-outlined text-[14px]">keyboard_return</span>
-              <span>Press Enter to capture</span>
+          <div className="flex items-center justify-between">
+            <div className="text-sm text-stone font-serif italic opacity-60">
+              Press Enter to capture
             </div>
-            
-            <button 
-              onClick={handlePreserve}
-              className="text-xs text-stone tracking-widest uppercase opacity-80 hover:opacity-100 transition-opacity"
-              aria-label="Preserve"
-            >
-              Preserve
-            </button>
           </div>
           
-          <div className="absolute -bottom-8 left-0 w-full h-px bg-stone/20"></div>
+          <div className="w-full h-px bg-stone/20"></div>
         </div>
 
-        <div className="flex flex-col gap-14 mt-8" data-testid="quote-feed">
+        <div className="flex flex-col gap-12" data-testid="quote-feed">
           {quotes.map((quote) => (
-            <article key={quote.id} className="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
-              <div className="flex flex-col gap-2">
-                <time className="text-sm text-stone font-semibold tracking-wide italic mb-1">
-                  {getRelativeTime(quote.timestamp)}
-                </time>
-                <p className="text-2xl md:text-3xl font-normal leading-snug text-charcoal group-hover:text-black transition-colors duration-500">
-                  {quote.text}
-                </p>
-              </div>
+            <article key={quote.id} className="group flex flex-col gap-2">
+              <time className="text-sm text-stone font-serif italic opacity-80">
+                {getRelativeTime(quote.timestamp)}
+              </time>
+              <p className="text-xl md:text-2xl font-normal leading-snug text-charcoal">
+                {quote.text}
+              </p>
             </article>
           ))}
         </div>
-        
-        <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-linen to-transparent pointer-events-none"></div>
       </main>
     </div>
   );
