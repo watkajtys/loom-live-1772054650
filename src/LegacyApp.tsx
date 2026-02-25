@@ -1,6 +1,6 @@
 import { DndContext, type DragEndEvent, useSensor, useSensors, PointerSensor } from '@dnd-kit/core';
-import LoomBoard from './components/LoomBoard';
-import ThreadSpool from './components/ThreadSpool';
+import LoomBoard from './components/legacy/LoomBoard';
+import ThreadSpool from './components/legacy/ThreadSpool';
 import { useStore } from './store';
 import './App.css';
 

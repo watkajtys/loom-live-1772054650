@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Keepsake App Flow Verification', async ({ page }) => {
   // 1. The user, exhausted after finally putting their toddler to sleep, navigates to the web application on their phone.
+  // This verifies the refactored KeepsakeApp components (CaptureInput, MemoryFeed).
   await page.goto('/echo');
 
   // 2. They are greeted immediately by a large, empty text field without needing to bypass any dashboards.

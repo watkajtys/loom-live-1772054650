@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLofiStore } from '../../store/lofiStore';
 
 const FocusEngine: React.FC = () => {
@@ -11,16 +11,33 @@ const FocusEngine: React.FC = () => {
   const resetTimer = useLofiStore((state) => state.resetTimer);
   const tickTimer = useLofiStore((state) => state.tickTimer);
 
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
+  // Use requestAnimationFrame for the timer loop
+  const requestRef = useRef<number | undefined>(undefined);
+  const startTimeRef = useRef<number | undefined>(undefined);
 
+  const animate = (time: number) => {
+    if (startTimeRef.current === undefined) {
+      startTimeRef.current = time;
+    }
+    const progress = time - startTimeRef.current;
+
+    if (progress >= 1000) {
+      tickTimer();
+      startTimeRef.current = time;
+    }
+    
+    requestRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
     if (isPlaying && timer > 0) {
-      interval = setInterval(() => {
-        tickTimer();
-      }, 1000);
+      requestRef.current = requestAnimationFrame(animate);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      startTimeRef.current = undefined;
+    };
   }, [isPlaying, timer, tickTimer]);
 
   const formatTime = (seconds: number) => {

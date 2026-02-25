@@ -1,31 +1,154 @@
 diff --git a/app/tests/verify.spec.ts b/app/tests/verify.spec.ts
-index de41914..48a3b8a 100644
+index 48a3b8a..7419070 100644
 --- a/app/tests/verify.spec.ts
 +++ b/app/tests/verify.spec.ts
-@@ -15,7 +15,7 @@ test('Keepsake App Flow Verification', async ({ page }) => {
-   
-   // Verify return icon (by checking the material icon text)
-   const returnIcon = page.locator('span.material-symbols-outlined');
--  await expect(returnIcon).toContainText('keyboard_return');
-+  await expect(returnIcon).toContainText('west');
+@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
  
-   // 3. They type: "I don't want to wear the blue socks, they are too spicy."
-   const quote = "I don't want to wear the blue socks, they are too spicy.";
+ test('Keepsake App Flow Verification', async ({ page }) => {
+   // 1. The user, exhausted after finally putting their toddler to sleep, navigates to the web application on their phone.
++  // This verifies the refactored KeepsakeApp components (CaptureInput, MemoryFeed).
+   await page.goto('/echo');
+ 
+   // 2. They are greeted immediately by a large, empty text field without needing to bypass any dashboards.
+diff --git a/package-lock.json b/package-lock.json
+index a8b2788..930690d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -80,7 +80,6 @@
+       "integrity": "sha512-CGOfOJqWjg2qW/Mb6zNsDm+u5vFQ8DxXfbM09z69p5Z6+mE1ikP2jUXw+j42Pf1XTYED2Rni5f95npYeuwMDQA==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@babel/code-frame": "^7.29.0",
+         "@babel/generator": "^7.29.0",
+@@ -349,7 +348,6 @@
+       "resolved": "https://registry.npmjs.org/@dnd-kit/core/-/core-6.3.1.tgz",
+       "integrity": "sha512-xkGBRQQab4RLwgXxoqETICr6S5JlogafbhNsidmrkVv2YRs5MLwpjoF2qpiGjQt8S9AoxtIV603s0GIUpY5eYQ==",
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@dnd-kit/accessibility": "^3.1.1",
+         "@dnd-kit/utilities": "^3.2.2",
+@@ -1296,7 +1294,6 @@
+       "integrity": "sha512-oH72nZRfDv9lADUBSo104Aq7gPHpQZc4BTx38r9xf9pg5LfP6EzSyH2n7qFmmxRQXh7YlUXODcYsg6PuTDSxGg==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "undici-types": "~7.16.0"
+       }
+@@ -1307,7 +1304,6 @@
+       "integrity": "sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==",
+       "devOptional": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "csstype": "^3.2.2"
+       }
+@@ -1367,7 +1363,6 @@
+       "integrity": "sha512-IgSWvLobTDOjnaxAfDTIHaECbkNlAlKv2j5SjpB2v7QHKv1FIfjwMy8FsDbVfDX/KjmCmYICcw7uGaXLhtsLNg==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@typescript-eslint/scope-manager": "8.56.0",
+         "@typescript-eslint/types": "8.56.0",
+@@ -1632,7 +1627,6 @@
+       "integrity": "sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "bin": {
+         "acorn": "bin/acorn"
+       },
+@@ -1778,7 +1772,6 @@
+         }
+       ],
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "baseline-browser-mapping": "^2.9.0",
+         "caniuse-lite": "^1.0.30001759",
+@@ -1993,7 +1986,6 @@
+       "integrity": "sha512-LEyamqS7W5HB3ujJyvi0HQK/dtVINZvd5mAAp9eT5S/ujByGjiZLCzPcHVzuXbpJDJF/cxwHlfceVUDZ2lnSTw==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@eslint-community/eslint-utils": "^4.8.0",
+         "@eslint-community/regexpp": "^4.12.1",
+@@ -2965,7 +2957,6 @@
+       "integrity": "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "engines": {
+         "node": ">=12"
+       },
+@@ -3039,7 +3030,6 @@
+         }
+       ],
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "nanoid": "^3.3.11",
+         "picocolors": "^1.1.1",
+@@ -3081,7 +3071,6 @@
+       "resolved": "https://registry.npmjs.org/react/-/react-19.2.4.tgz",
+       "integrity": "sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==",
+       "license": "MIT",
+-      "peer": true,
+       "engines": {
+         "node": ">=0.10.0"
+       }
+@@ -3091,7 +3080,6 @@
+       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.2.4.tgz",
+       "integrity": "sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ==",
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "scheduler": "^0.27.0"
+       },
+@@ -3350,7 +3338,6 @@
+       "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+       "dev": true,
+       "license": "Apache-2.0",
+-      "peer": true,
+       "bin": {
+         "tsc": "bin/tsc",
+         "tsserver": "bin/tsserver"
+@@ -3437,7 +3424,6 @@
+       "integrity": "sha512-RHX7IvsJlEfjyA1rS7MY0UsmF91etdLAamslHR5lfuO3W/BXRdXm2tRE64ztpSPZbKqB4wAAZ0AwtF6QzfKZLA==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "dependencies": {
+         "@oxc-project/runtime": "0.114.0",
+         "lightningcss": "^1.31.1",
+@@ -3563,7 +3549,6 @@
+       "integrity": "sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==",
+       "dev": true,
+       "license": "MIT",
+-      "peer": true,
+       "funding": {
+         "url": "https://github.com/sponsors/colinhacks"
+       }
 diff --git a/playwright-report/index.html b/playwright-report/index.html
-index 47e90e1..5451dcf 100644
+index 9fb6036..79121f7 100644
 --- a/playwright-report/index.html
 +++ b/playwright-report/index.html
 @@ -82,4 +82,4 @@ Error generating stack: `+a.message+`
      <div id='root'></div>
    </body>
  </html>
--<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
+-<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
 \ No newline at end of file
-+<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
++<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
 \ No newline at end of file
 diff --git a/playwright-report/index.html.rej b/playwright-report/index.html.rej
 deleted file mode 100644
-index 473ffaa..0000000
+index 52ec178..0000000
 --- a/playwright-report/index.html.rej
 +++ /dev/null
 @@ -1,9 +0,0 @@
@@ -34,47 +157,652 @@ index 473ffaa..0000000
 -     <div id='root'></div>
 -   </body>
 - </html>
---<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
+--<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
 -\ No newline at end of file
--+<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
+-+<script id="playwrightReportBase64" type="application/zip">data:application/zip;base64,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</script>
 -\ No newline at end of file
+diff --git a/src/LegacyApp.tsx b/src/LegacyApp.tsx
+index 025ed1b..332f832 100644
+--- a/src/LegacyApp.tsx
++++ b/src/LegacyApp.tsx
+@@ -1,6 +1,6 @@
+ import { DndContext, type DragEndEvent, useSensor, useSensors, PointerSensor } from '@dnd-kit/core';
+-import LoomBoard from './components/LoomBoard';
+-import ThreadSpool from './components/ThreadSpool';
++import LoomBoard from './components/legacy/LoomBoard';
++import ThreadSpool from './components/legacy/ThreadSpool';
+ import { useStore } from './store';
+ import './App.css';
+ 
+diff --git a/src/components/keepsake/CaptureInput.tsx b/src/components/keepsake/CaptureInput.tsx
+new file mode 100644
+index 0000000..7556eb1
+--- /dev/null
++++ b/src/components/keepsake/CaptureInput.tsx
+@@ -0,0 +1,62 @@
++import { useState, useRef, useEffect } from 'react';
++import { useKeepsakeStore } from '../../store/keepsakeStore';
++
++export default function CaptureInput() {
++  const [text, setText] = useState('');
++  const { addQuote } = useKeepsakeStore();
++  const textareaRef = useRef<HTMLTextAreaElement>(null);
++  const shadowRef = useRef<HTMLDivElement>(null);
++
++  const handlePreserve = () => {
++    if (!text.trim()) return;
++    addQuote(text.trim());
++    setText('');
++  };
++
++  const handleKeyDown = (e: React.KeyboardEvent) => {
++    if (e.key === 'Enter' && !e.shiftKey) {
++      e.preventDefault();
++      handlePreserve();
++    }
++  };
++
++  // Auto-resize using shadow div
++  useEffect(() => {
++    if (textareaRef.current && shadowRef.current) {
++      shadowRef.current.innerText = text + '\u200b'; // Add zero-width space to ensure height with trailing newline
++      textareaRef.current.style.height = `${Math.max(shadowRef.current.scrollHeight, 48)}px`;
++    }
++  }, [text]);
++
++  return (
++    <div className="w-full relative flex flex-col gap-8 items-start">
++      {/* Hidden shadow div for height calculation */}
++      <div
++        ref={shadowRef}
++        className="absolute top-0 left-0 w-full invisible pointer-events-none text-4xl md:text-5xl font-normal leading-tight font-serif p-0 whitespace-pre-wrap break-words"
++        aria-hidden="true"
++      ></div>
++
++      <textarea
++        ref={textareaRef}
++        autoFocus
++        className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none overflow-hidden"
++        placeholder="What did they say today?"
++        rows={1}
++        style={{ minHeight: '3em' }}
++        value={text}
++        onChange={(e) => setText(e.target.value)}
++        onKeyDown={handleKeyDown}
++      />
++      
++      <div className="flex flex-col items-start gap-6 w-full">
++        <div className="text-xs tracking-widest uppercase font-serif italic text-charcoal-ink/50 flex items-center gap-2">
++          <span className="material-symbols-outlined text-sm font-light">west</span>
++          <span>Press Enter to capture</span>
++        </div>
++        
++        <div className="w-full h-px bg-charcoal-ink/10"></div>
++      </div>
++    </div>
++  );
++}
 diff --git a/src/components/keepsake/KeepsakeApp.tsx b/src/components/keepsake/KeepsakeApp.tsx
-index 01e02de..e7c221f 100644
+index e7c221f..32a374e 100644
 --- a/src/components/keepsake/KeepsakeApp.tsx
 +++ b/src/components/keepsake/KeepsakeApp.tsx
-@@ -71,11 +71,11 @@ export default function KeepsakeApp() {
+@@ -1,111 +1,12 @@
+-import { useState, useEffect, useRef } from 'react';
+-import { useKeepsakeStore } from '../../store/keepsakeStore';
+-
+-const getRelativeTime = (timestamp: number) => {
+-  const now = Date.now();
+-  const diff = now - timestamp;
+-  
+-  // Just now: < 1 minute
+-  if (diff < 60000) return 'Just now';
+-  
+-  // Minutes: < 1 hour
+-  const minutes = Math.floor(diff / 60000);
+-  if (diff < 3600000) return `${minutes}m ago`;
+-  
+-  // Hours: < 24 hours AND same day (rough approximation for "Today")
+-  const date = new Date(timestamp);
+-  const today = new Date();
+-  const isToday = date.getDate() === today.getDate() && 
+-                  date.getMonth() === today.getMonth() && 
+-                  date.getFullYear() === today.getFullYear();
+-                  
+-  if (isToday) return 'Today';
+-  
+-  // Yesterday
+-  const yesterday = new Date(today);
+-  yesterday.setDate(yesterday.getDate() - 1);
+-  const isYesterday = date.getDate() === yesterday.getDate() &&
+-                      date.getMonth() === yesterday.getMonth() &&
+-                      date.getFullYear() === yesterday.getFullYear();
+-                      
+-  if (isYesterday) return 'Yesterday';
+-  
+-  // Days ago: < 7 days
+-  const days = Math.floor(diff / 86400000);
+-  if (days < 7) return `${days} days ago`;
+-  
+-  // Date format
+-  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+-};
++import CaptureInput from './CaptureInput';
++import MemoryFeed from './MemoryFeed';
+ 
+ export default function KeepsakeApp() {
+-  const [text, setText] = useState('');
+-  const { quotes, addQuote } = useKeepsakeStore();
+-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+-
+-  const handlePreserve = () => {
+-    if (!text.trim()) return;
+-    addQuote(text.trim());
+-    setText('');
+-    if (textareaRef.current) {
+-        textareaRef.current.style.height = 'auto';
+-        textareaRef.current.style.height = '3em'; // Reset to min height
+-    }
+-  };
+-
+-  const handleKeyDown = (e: React.KeyboardEvent) => {
+-    if (e.key === 'Enter' && !e.shiftKey) {
+-      e.preventDefault();
+-      handlePreserve();
+-    }
+-  };
+-
+-  // Auto-resize textarea
+-  useEffect(() => {
+-    if (textareaRef.current) {
+-      textareaRef.current.style.height = 'auto';
+-      textareaRef.current.style.height = `${Math.max(textareaRef.current.scrollHeight, 48)}px`; // 3em approx 48px
+-    }
+-  }, [text]);
+-
    return (
      <div className="fixed inset-0 z-50 overflow-y-auto bg-warm-parchment bg-[image:var(--background-image-paper-texture)] font-serif text-charcoal-ink antialiased selection:bg-faded-sand selection:text-charcoal-ink flex flex-col items-center">
        <main className="w-full max-w-xl mx-auto px-6 py-24 flex flex-col gap-12">
--        <div className="w-full relative flex flex-col gap-8 items-center">
-+        <div className="w-full relative flex flex-col gap-8 items-start">
-           <textarea
-             ref={textareaRef}
-             autoFocus
--            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none text-center placeholder:text-center"
-+            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none"
-             placeholder="What did they say today?"
-             rows={1}
-             style={{ minHeight: '3em' }}
-@@ -84,10 +84,10 @@ export default function KeepsakeApp() {
-             onKeyDown={handleKeyDown}
-           />
-           
--          <div className="flex flex-col items-center gap-6 w-full">
-+          <div className="flex flex-col items-start gap-6 w-full">
-             <div className="text-xs tracking-widest uppercase font-serif italic text-charcoal-ink/50 flex items-center gap-2">
-+              <span className="material-symbols-outlined text-sm font-light">west</span>
-               <span>Press Enter to capture</span>
--              <span className="material-symbols-outlined text-sm font-light">keyboard_return</span>
-             </div>
-             
-             <div className="w-full h-px bg-charcoal-ink/10"></div>
-@@ -96,7 +96,7 @@ export default function KeepsakeApp() {
+-        <div className="w-full relative flex flex-col gap-8 items-start">
+-          <textarea
+-            ref={textareaRef}
+-            autoFocus
+-            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none"
+-            placeholder="What did they say today?"
+-            rows={1}
+-            style={{ minHeight: '3em' }}
+-            value={text}
+-            onChange={(e) => setText(e.target.value)}
+-            onKeyDown={handleKeyDown}
+-          />
+-          
+-          <div className="flex flex-col items-start gap-6 w-full">
+-            <div className="text-xs tracking-widest uppercase font-serif italic text-charcoal-ink/50 flex items-center gap-2">
+-              <span className="material-symbols-outlined text-sm font-light">west</span>
+-              <span>Press Enter to capture</span>
+-            </div>
+-            
+-            <div className="w-full h-px bg-charcoal-ink/10"></div>
+-          </div>
+-        </div>
+-
+-        <div className="flex flex-col gap-12" data-testid="quote-feed">
+-          {quotes.map((quote) => (
+-            <article key={quote.id} className="group flex flex-col gap-2 items-start text-left">
+-              <time className="text-sm text-charcoal-ink/60 font-serif italic">
+-                {getRelativeTime(quote.timestamp)}
+-              </time>
+-              <p className="text-xl md:text-2xl font-normal leading-snug text-charcoal-ink">
+-                {quote.text}
+-              </p>
+-            </article>
+-          ))}
+-        </div>
++        <CaptureInput />
++        <MemoryFeed />
+       </main>
+     </div>
+   );
+diff --git a/src/components/keepsake/MemoryFeed.tsx b/src/components/keepsake/MemoryFeed.tsx
+new file mode 100644
+index 0000000..efd1dfb
+--- /dev/null
++++ b/src/components/keepsake/MemoryFeed.tsx
+@@ -0,0 +1,57 @@
++import { useKeepsakeStore } from '../../store/keepsakeStore';
++
++const getRelativeTime = (timestamp: number) => {
++  const now = Date.now();
++  const diff = now - timestamp;
++  
++  // Just now: < 1 minute
++  if (diff < 60000) return 'Just now';
++  
++  // Minutes: < 1 hour
++  const minutes = Math.floor(diff / 60000);
++  if (diff < 3600000) return `${minutes}m ago`;
++  
++  // Hours: < 24 hours AND same day (rough approximation for "Today")
++  const date = new Date(timestamp);
++  const today = new Date();
++  const isToday = date.getDate() === today.getDate() && 
++                  date.getMonth() === today.getMonth() && 
++                  date.getFullYear() === today.getFullYear();
++                  
++  if (isToday) return 'Today';
++  
++  // Yesterday
++  const yesterday = new Date(today);
++  yesterday.setDate(yesterday.getDate() - 1);
++  const isYesterday = date.getDate() === yesterday.getDate() &&
++                      date.getMonth() === yesterday.getMonth() &&
++                      date.getFullYear() === yesterday.getFullYear();
++                      
++  if (isYesterday) return 'Yesterday';
++  
++  // Days ago: < 7 days
++  const days = Math.floor(diff / 86400000);
++  if (days < 7) return `${days} days ago`;
++  
++  // Date format
++  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
++};
++
++export default function MemoryFeed() {
++  const { quotes } = useKeepsakeStore();
++
++  return (
++    <div className="flex flex-col gap-12" data-testid="quote-feed">
++      {quotes.map((quote) => (
++        <article key={quote.id} className="group flex flex-col gap-2 items-start text-left">
++          <time className="text-sm text-charcoal-ink/60 font-serif italic">
++            {getRelativeTime(quote.timestamp)}
++          </time>
++          <p className="text-xl md:text-2xl font-normal leading-snug text-charcoal-ink">
++            {quote.text}
++          </p>
++        </article>
++      ))}
++    </div>
++  );
++}
+diff --git a/src/components/LoomBoard.tsx b/src/components/legacy/LoomBoard.tsx
+similarity index 80%
+rename from src/components/LoomBoard.tsx
+rename to src/components/legacy/LoomBoard.tsx
+index a4f6fe5..bbf85a6 100644
+--- a/src/components/LoomBoard.tsx
++++ b/src/components/legacy/LoomBoard.tsx
+@@ -1,6 +1,7 @@
+-import { useStore, type Thread } from '../store';
++import { useStore } from '../../store';
+ import { useDroppable } from '@dnd-kit/core';
+ import { useMemo } from 'react';
++import { calculateThreadLayout, type ThreadWithLayout } from '../../utils/layoutUtils';
  
-         <div className="flex flex-col gap-12" data-testid="quote-feed">
-           {quotes.map((quote) => (
--            <article key={quote.id} className="group flex flex-col gap-2 items-center text-center">
-+            <article key={quote.id} className="group flex flex-col gap-2 items-start text-left">
-               <time className="text-sm text-charcoal-ink/60 font-serif italic">
-                 {getRelativeTime(quote.timestamp)}
-               </time>
+ // Helper to format time
+ const formatTime = (minutes: number) => {
+@@ -9,113 +10,6 @@ const formatTime = (minutes: number) => {
+   return `${h.toString().padStart(2, '0')}${m.toString().padStart(2, '0')}`;
+ };
+ 
+-interface ThreadWithLayout extends Thread {
+-  style: React.CSSProperties;
+-  layoutClass: string;
+-  colIndex: number;
+-  svgLeft: number;
+-  svgWidth: number;
+-}
+-
+-// Layout algorithm for overlapping threads
+-const calculateThreadLayout = (threads: Thread[]): ThreadWithLayout[] => {
+-  if (threads.length === 0) return [];
+-
+-  const sorted = [...threads].sort((a, b) => (a.startTime || 0) - (b.startTime || 0));
+-
+-  const groups: ThreadWithLayout[][] = [];
+-  let currentGroup: ThreadWithLayout[] = [];
+-  let groupEndTime = -1;
+-
+-  for (const thread of sorted) {
+-    if (currentGroup.length === 0) {
+-      currentGroup.push({ ...thread, style: {}, layoutClass: '', colIndex: 0 } as ThreadWithLayout);
+-      groupEndTime = thread.startTime! + thread.duration;
+-    } else {
+-       if (thread.startTime! < groupEndTime) {
+-         currentGroup.push({ ...thread, style: {}, layoutClass: '', colIndex: 0 } as ThreadWithLayout);
+-         groupEndTime = Math.max(groupEndTime, thread.startTime! + thread.duration);
+-       } else {
+-         groups.push(currentGroup);
+-         currentGroup = [{ ...thread, style: {}, layoutClass: '', colIndex: 0 } as ThreadWithLayout];
+-         groupEndTime = thread.startTime! + thread.duration;
+-       }
+-    }
+-  }
+-  if (currentGroup.length > 0) groups.push(currentGroup);
+-
+-  const finalResult: ThreadWithLayout[] = [];
+-
+-  for (const group of groups) {
+-    // Assign columns within group
+-    const groupColumns: ThreadWithLayout[][] = [];
+-    for (const thread of group) {
+-       let placed = false;
+-       for (let i = 0; i < groupColumns.length; i++) {
+-         const col = groupColumns[i];
+-         const last = col[col.length - 1];
+-         if ((last.startTime! + last.duration) <= thread.startTime!) {
+-           col.push(thread);
+-           thread.colIndex = i;
+-           placed = true;
+-           break;
+-         }
+-       }
+-       if (!placed) {
+-         groupColumns.push([thread]);
+-         thread.colIndex = groupColumns.length - 1;
+-       }
+-    }
+-    
+-    const numCols = groupColumns.length;
+-    for (const thread of group) {
+-      let style: React.CSSProperties = {
+-        top: `${thread.startTime}px`,
+-        height: `${thread.duration}px`,
+-        zIndex: thread.title === 'Frontend Impl.' ? 40 : (thread.colIndex > 0 ? 20 : 10),
+-      };
+-      let layoutClass = 'cyber-ribbon';
+-      let svgLeft = 0;
+-      let svgWidth = 100;
+-
+-      if (numCols === 1) {
+-        style = { ...style, left: '1.5rem', right: '2.5rem' }; // Standard margins
+-        svgLeft = 0;
+-        svgWidth = 100;
+-      } else if (numCols === 2) {
+-        if (thread.colIndex === 0) {
+-          // Left column
+-          style = { ...style, left: '2rem', right: '50%', marginRight: '1rem' };
+-          layoutClass = 'cyber-ribbon-reverse';
+-          svgLeft = 0;
+-          svgWidth = 50;
+-        } else {
+-          // Right column
+-          style = { ...style, left: '50%', right: '1rem', marginLeft: '-1.25rem' };
+-          layoutClass = 'cyber-ribbon';
+-          svgLeft = 50;
+-          svgWidth = 50;
+-        }
+-      } else {
+-        // Fallback for > 2 columns (simple split)
+-        const width = 100 / numCols;
+-        const left = thread.colIndex * width;
+-        style = { ...style, left: `${left}%`, width: `${width}%` };
+-        svgLeft = left;
+-        svgWidth = width;
+-      }
+-
+-      thread.style = style;
+-      thread.layoutClass = layoutClass;
+-      thread.svgLeft = svgLeft;
+-      thread.svgWidth = svgWidth;
+-      finalResult.push(thread);
+-    }
+-  }
+-
+-  return finalResult;
+-};
+-
+ 
+ function BoardThread({ thread, isActive }: { thread: ThreadWithLayout; isActive: boolean }) {
+   const colors = {
+diff --git a/src/components/ThreadSpool.tsx b/src/components/legacy/ThreadSpool.tsx
+similarity index 99%
+rename from src/components/ThreadSpool.tsx
+rename to src/components/legacy/ThreadSpool.tsx
+index b4965ba..7cc227f 100644
+--- a/src/components/ThreadSpool.tsx
++++ b/src/components/legacy/ThreadSpool.tsx
+@@ -1,5 +1,5 @@
+ import { useState } from 'react';
+-import { useStore, type Thread } from '../store';
++import { useStore, type Thread } from '../../store';
+ import { useDraggable } from '@dnd-kit/core';
+ 
+ function DraggableThread({ thread }: { thread: Thread }) {
+diff --git a/src/components/lofi/FocusEngine.tsx b/src/components/lofi/FocusEngine.tsx
+index 3bb2d49..3315d38 100644
+--- a/src/components/lofi/FocusEngine.tsx
++++ b/src/components/lofi/FocusEngine.tsx
+@@ -1,4 +1,4 @@
+-import React, { useEffect } from 'react';
++import React, { useEffect, useRef } from 'react';
+ import { useLofiStore } from '../../store/lofiStore';
+ 
+ const FocusEngine: React.FC = () => {
+@@ -11,16 +11,33 @@ const FocusEngine: React.FC = () => {
+   const resetTimer = useLofiStore((state) => state.resetTimer);
+   const tickTimer = useLofiStore((state) => state.tickTimer);
+ 
+-  useEffect(() => {
+-    let interval: ReturnType<typeof setInterval>;
++  // Use requestAnimationFrame for the timer loop
++  const requestRef = useRef<number | undefined>(undefined);
++  const startTimeRef = useRef<number | undefined>(undefined);
++
++  const animate = (time: number) => {
++    if (startTimeRef.current === undefined) {
++      startTimeRef.current = time;
++    }
++    const progress = time - startTimeRef.current;
+ 
++    if (progress >= 1000) {
++      tickTimer();
++      startTimeRef.current = time;
++    }
++    
++    requestRef.current = requestAnimationFrame(animate);
++  };
++
++  useEffect(() => {
+     if (isPlaying && timer > 0) {
+-      interval = setInterval(() => {
+-        tickTimer();
+-      }, 1000);
++      requestRef.current = requestAnimationFrame(animate);
+     }
+ 
+-    return () => clearInterval(interval);
++    return () => {
++      if (requestRef.current) cancelAnimationFrame(requestRef.current);
++      startTimeRef.current = undefined;
++    };
+   }, [isPlaying, timer, tickTimer]);
+ 
+   const formatTime = (seconds: number) => {
+diff --git a/src/hooks/useAudioEngine.ts b/src/hooks/useAudioEngine.ts
+index f022a35..a0effdf 100644
+--- a/src/hooks/useAudioEngine.ts
++++ b/src/hooks/useAudioEngine.ts
+@@ -6,20 +6,44 @@ export const useAudioEngine = () => {
+   const isPlaying = useLofiStore((state) => state.isPlaying);
+   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
+ 
++  // Memoize stem IDs to trigger initialization only when composition changes
++  const stemIds = audioStems.map(s => s.id).join(',');
++  
++  // 1. Initialization Effect: Only runs when the composition of stems changes (IDs)
+   useEffect(() => {
++    const currentIds = new Set(audioStems.map(s => s.id));
++
++    // Cleanup removed stems
++    Object.keys(audioRefs.current).forEach(id => {
++      if (!currentIds.has(id)) {
++        const audio = audioRefs.current[id];
++        audio.pause();
++        audio.src = ''; // Release memory
++        delete audioRefs.current[id];
++      }
++    });
++
++    // Initialize new stems
+     audioStems.forEach((stem) => {
+-      let audio = audioRefs.current[stem.id];
+-      
+-      // Initialize if not exists
+-      if (!audio && stem.src) {
+-        audio = new Audio(stem.src);
++      if (!audioRefs.current[stem.id] && stem.src) {
++        const audio = new Audio(stem.src);
+         audio.loop = true;
+         audioRefs.current[stem.id] = audio;
+       }
+-
++    });
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, [stemIds]); 
++  
++  // 2. Volume & Playback Sync Effect: Runs on volume/playback changes
++  useEffect(() => {
++    audioStems.forEach((stem) => {
++      const audio = audioRefs.current[stem.id];
+       if (audio) {
+-        // Update properties
+-        audio.volume = stem.muted ? 0 : stem.volume / 100;
++        // Update volume
++        const targetVolume = stem.muted ? 0 : stem.volume / 100;
++        if (Math.abs(audio.volume - targetVolume) > 0.001) {
++            audio.volume = targetVolume;
++        }
+ 
+         // Sync playback state
+         if (isPlaying) {
+@@ -40,11 +64,14 @@ export const useAudioEngine = () => {
+     });
+   }, [audioStems, isPlaying]);
+ 
++  // Global Cleanup
+   useEffect(() => {
+     return () => {
+       Object.values(audioRefs.current).forEach((audio) => {
+         audio.pause();
++        audio.src = '';
+       });
++      audioRefs.current = {};
+     };
+   }, []);
+ };
+diff --git a/src/utils/layoutUtils.ts b/src/utils/layoutUtils.ts
+new file mode 100644
+index 0000000..e008c75
+--- /dev/null
++++ b/src/utils/layoutUtils.ts
+@@ -0,0 +1,109 @@
++import { type CSSProperties } from 'react';
++import { type Thread } from '../store';
++
++export interface ThreadWithLayout extends Thread {
++  style: CSSProperties;
++  layoutClass: string;
++  colIndex: number;
++  svgLeft: number;
++  svgWidth: number;
++}
++
++// Layout algorithm for overlapping threads
++export const calculateThreadLayout = (threads: Thread[]): ThreadWithLayout[] => {
++  if (threads.length === 0) return [];
++
++  const sorted = [...threads].sort((a, b) => (a.startTime || 0) - (b.startTime || 0));
++
++  const groups: ThreadWithLayout[][] = [];
++  let currentGroup: ThreadWithLayout[] = [];
++  let groupEndTime = -1;
++
++  for (const thread of sorted) {
++    if (currentGroup.length === 0) {
++      currentGroup.push({ ...thread, style: {}, layoutClass: '', colIndex: 0 } as ThreadWithLayout);
++      groupEndTime = thread.startTime! + thread.duration;
++    } else {
++       if (thread.startTime! < groupEndTime) {
++         currentGroup.push({ ...thread, style: {}, layoutClass: '', colIndex: 0 } as ThreadWithLayout);
++         groupEndTime = Math.max(groupEndTime, thread.startTime! + thread.duration);
++       } else {
++         groups.push(currentGroup);
++         currentGroup = [{ ...thread, style: {}, layoutClass: '', colIndex: 0 } as ThreadWithLayout];
++         groupEndTime = thread.startTime! + thread.duration;
++       }
++    }
++  }
++  if (currentGroup.length > 0) groups.push(currentGroup);
++
++  const finalResult: ThreadWithLayout[] = [];
++
++  for (const group of groups) {
++    // Assign columns within group
++    const groupColumns: ThreadWithLayout[][] = [];
++    for (const thread of group) {
++       let placed = false;
++       for (let i = 0; i < groupColumns.length; i++) {
++         const col = groupColumns[i];
++         const last = col[col.length - 1];
++         if ((last.startTime! + last.duration) <= thread.startTime!) {
++           col.push(thread);
++           thread.colIndex = i;
++           placed = true;
++           break;
++         }
++       }
++       if (!placed) {
++         groupColumns.push([thread]);
++         thread.colIndex = groupColumns.length - 1;
++       }
++    }
++    
++    const numCols = groupColumns.length;
++    for (const thread of group) {
++      let style: CSSProperties = {
++        top: `${thread.startTime}px`,
++        height: `${thread.duration}px`,
++        zIndex: thread.title === 'Frontend Impl.' ? 40 : (thread.colIndex > 0 ? 20 : 10),
++      };
++      let layoutClass = 'cyber-ribbon';
++      let svgLeft = 0;
++      let svgWidth = 100;
++
++      if (numCols === 1) {
++        style = { ...style, left: '1.5rem', right: '2.5rem' }; // Standard margins
++        svgLeft = 0;
++        svgWidth = 100;
++      } else if (numCols === 2) {
++        if (thread.colIndex === 0) {
++          // Left column
++          style = { ...style, left: '2rem', right: '50%', marginRight: '1rem' };
++          layoutClass = 'cyber-ribbon-reverse';
++          svgLeft = 0;
++          svgWidth = 50;
++        } else {
++          // Right column
++          style = { ...style, left: '50%', right: '1rem', marginLeft: '-1.25rem' };
++          layoutClass = 'cyber-ribbon';
++          svgLeft = 50;
++          svgWidth = 50;
++        }
++      } else {
++        // Fallback for > 2 columns (simple split)
++        const width = 100 / numCols;
++        const left = thread.colIndex * width;
++        style = { ...style, left: `${left}%`, width: `${width}%` };
++        svgLeft = left;
++        svgWidth = width;
++      }
++
++      thread.style = style;
++      thread.layoutClass = layoutClass;
++      thread.svgLeft = svgLeft;
++      thread.svgWidth = svgWidth;
++      finalResult.push(thread);
++    }
++  }
++
++  return finalResult;
++};

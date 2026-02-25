@@ -6,20 +6,44 @@ export const useAudioEngine = () => {
   const isPlaying = useLofiStore((state) => state.isPlaying);
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
 
+  // Memoize stem IDs to trigger initialization only when composition changes
+  const stemIds = audioStems.map(s => s.id).join(',');
+  
+  // 1. Initialization Effect: Only runs when the composition of stems changes (IDs)
   useEffect(() => {
+    const currentIds = new Set(audioStems.map(s => s.id));
+
+    // Cleanup removed stems
+    Object.keys(audioRefs.current).forEach(id => {
+      if (!currentIds.has(id)) {
+        const audio = audioRefs.current[id];
+        audio.pause();
+        audio.src = ''; // Release memory
+        delete audioRefs.current[id];
+      }
+    });
+
+    // Initialize new stems
     audioStems.forEach((stem) => {
-      let audio = audioRefs.current[stem.id];
-      
-      // Initialize if not exists
-      if (!audio && stem.src) {
-        audio = new Audio(stem.src);
+      if (!audioRefs.current[stem.id] && stem.src) {
+        const audio = new Audio(stem.src);
         audio.loop = true;
         audioRefs.current[stem.id] = audio;
       }
-
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stemIds]); 
+  
+  // 2. Volume & Playback Sync Effect: Runs on volume/playback changes
+  useEffect(() => {
+    audioStems.forEach((stem) => {
+      const audio = audioRefs.current[stem.id];
       if (audio) {
-        // Update properties
-        audio.volume = stem.muted ? 0 : stem.volume / 100;
+        // Update volume
+        const targetVolume = stem.muted ? 0 : stem.volume / 100;
+        if (Math.abs(audio.volume - targetVolume) > 0.001) {
+            audio.volume = targetVolume;
+        }
 
         // Sync playback state
         if (isPlaying) {
@@ -40,11 +64,14 @@ export const useAudioEngine = () => {
     });
   }, [audioStems, isPlaying]);
 
+  // Global Cleanup
   useEffect(() => {
     return () => {
       Object.values(audioRefs.current).forEach((audio) => {
         audio.pause();
+        audio.src = '';
       });
+      audioRefs.current = {};
     };
   }, []);
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStore, type Thread } from '../store';
+import { useStore, type Thread } from '../../store';
 import { useDraggable } from '@dnd-kit/core';
 
 function DraggableThread({ thread }: { thread: Thread }) {
