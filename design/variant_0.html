@@ -1,209 +1,119 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
+<html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LofiLoom Warm Solar Theme Variant 1</title>
+<title>Echo - Warm Linen Theme</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#FFB74D","primary-dark": "#F57C00","background-dark": "#1F150A","solar-deep": "#2D1B0E",},
-                    fontFamily: {
-                        "display": ["Nunito", "sans-serif"]
+                        "linen": "#F0EAD6",
+                        "linen-dark": "#E6DDD0",
+                        "charcoal": "#2C2C2C",
+                        "charcoal-light": "#4A4A4A",
+                        "stone": "#8C8880",
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                    fontFamily: {
+                        "serif": ["Crimson Pro", "serif"]
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjRjBFQUQ2Ii8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNFNkRERDAiLz4KPC9zdmc+')",
+                    }
                 },
             },
         }
     </script>
 <style>
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 4px;
         }
         ::-webkit-scrollbar-track {
             background: transparent;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 183, 77, 0.2);
-            border-radius: 3px;
+            background-color: #8C8880;
+            border-radius: 20px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 183, 77, 0.4);
+        .monastic-input::placeholder {
+            color: #8C8880;
+            opacity: 0.6;
+            font-style: italic;
         }
-        .glass-panel {
-            background: rgba(45, 27, 14, 0.4);backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 215, 0, 0.1);box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        .glass-panel-deep {
-            background: rgba(45, 27, 14, 0.75);backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border-top: 1px solid rgba(255, 215, 0, 0.15);}
-        input[type=range] {
-            -webkit-appearance: none; 
-            background: transparent; 
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 14px;
-            width: 14px;
-            border-radius: 50%;
-            background: #FFB74D;
-            cursor: pointer;
-            margin-top: -5px; 
-            box-shadow: 0 0 10px rgba(255, 183, 77, 0.8);
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 4px;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-        }
-        input[type=range]:focus {
-            outline: none; 
-        }
-        @keyframes pulse-warm {
-            0%, 100% { box-shadow: 0 0 15px rgba(255, 183, 77, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(255, 160, 0, 0.5); }
-        }
-        .glow-ring {
-            animation: pulse-warm 4s infinite ease-in-out;
-        }
-        .text-glow {
-             text-shadow: 0 0 10px rgba(255, 183, 77, 0.5);
+        .monastic-input:focus::placeholder {
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }::selection {
+            background-color: #D3CFC0;color: #2C2C2C;
         }
     </style>
 </head>
-<body class="font-display bg-background-dark text-orange-50 h-screen w-screen overflow-hidden relative">
-<div class="fixed inset-0 z-0">
-<div class="absolute inset-0 bg-solar-deep/30 backdrop-blur-sm z-10 pointer-events-none mix-blend-multiply"></div>
-<div class="absolute inset-0 bg-gradient-to-tr from-orange-900/40 via-transparent to-amber-500/20 z-10 pointer-events-none"></div>
-<img alt="Sunny afternoon interior with warm lighting" class="w-full h-full object-cover object-center opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PP_caerHclccMgPpCG9L0OJ6FJeq-dgqgiTJa5HRcA0uNfoui-KmhqCveye6rIkbgnn8Qc2HfEQ4kfa2K7sPI2d29uAF1zld8I_-vKueuV1YSZM_WyPwkgulOUQ6z18va11nZgIj0IdHrGGMgMbL6fZB8pqK4MfL_C6eX2pGpmYd1jOWxHuFDVSyC6LeW3h_HcNZ-2OyUuBql_BK4hBzBKdnesjS4cczB4nDxxhm23B9Sjo4rOGuUox7-sNpOiDilrJWUOvXKlc"/>
+<body class="bg-paper-texture font-serif text-charcoal min-h-screen antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col items-center pt-24 pb-32">
+<main class="w-full max-w-3xl px-8 flex flex-col gap-16">
+<div class="w-full relative">
+<textarea autofocus="" class="monastic-input w-full bg-transparent border-none text-4xl md:text-5xl lg:text-6xl font-normal text-charcoal placeholder:text-stone focus:ring-0 resize-none p-0 leading-tight outline-none" placeholder="What did they say today?" rows="1" style="min-height: 3em;"></textarea>
+<div class="mt-4 flex items-center gap-2 text-xs text-stone tracking-widest uppercase opacity-80">
+<span class="material-symbols-outlined text-[14px]">keyboard_return</span>
+<span>Press Enter to capture</span>
 </div>
-<nav class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-8 bg-gradient-to-b from-black/50 to-transparent">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-primary text-3xl drop-shadow-[0_0_8px_rgba(255,183,77,0.8)]">wb_sunny</span>
-<span class="text-amber-50 font-bold text-lg tracking-wide uppercase drop-shadow-md">LofiLoom</span>
+<div class="absolute -bottom-8 left-0 w-full h-px bg-stone/20"></div>
 </div>
-<div class="flex items-center gap-6">
-<div class="hidden md:flex items-center gap-2 text-amber-100/80 text-xs font-medium bg-amber-950/30 px-4 py-2 rounded-full border border-amber-500/20 backdrop-blur-md">
-<span class="material-symbols-outlined text-primary text-base">timer</span>
-<span>Session: 45m</span>
+<div class="flex flex-col gap-14 mt-8">
+<article class="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
+<div class="flex flex-col gap-2">
+<time class="text-sm text-stone font-semibold tracking-wide italic mb-1">Today</time>
+<p class="text-2xl md:text-3xl font-normal leading-snug text-charcoal group-hover:text-black transition-colors duration-500">
+                            I want to be a cloud when I grow up so I can hug the sky.
+                        </p>
 </div>
-<div class="flex items-center gap-3 cursor-pointer group">
-<div class="size-8 rounded-full border border-amber-200/30 overflow-hidden shadow-[0_0_10px_rgba(255,160,0,0.3)]">
-<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQExQBHfWJqTQgtxDg2jHHFqdQhpS992LP-o2S3u9Z-3gS-m05hQvpb28jY8FnEf3PeALZ7XOux9z27smmCzkIPSj72mt9EcSUO-g7_b3aQZJzii4r5mEfs5Tzk_D1tX8s0LguImvMASmKxY9_1UWEwNvSj9bSh4IzObX06QYh9XzyIQaMol6jiu0QypYdWk-vMsu0V4OhozVkD3qIOWgtF2BUoo9k_LUCpN16uZpqjZkNqbKj1n1nZolEm9nGzcxZejHnxWz2sB4"/>
+</article>
+<article class="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
+<div class="flex flex-col gap-2">
+<time class="text-sm text-stone font-semibold tracking-wide italic mb-1">Yesterday</time>
+<p class="text-2xl md:text-3xl font-normal leading-snug text-charcoal-light group-hover:text-black transition-colors duration-500">
+                            Do stars get sleepy?
+                        </p>
 </div>
+</article>
+<article class="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
+<div class="flex flex-col gap-2">
+<time class="text-sm text-stone font-semibold tracking-wide italic mb-1">2 days ago</time>
+<p class="text-2xl md:text-3xl font-normal leading-snug text-charcoal-light/90 group-hover:text-black transition-colors duration-500">
+                            My shadow is my best friend because he follows me everywhere.
+                        </p>
 </div>
+</article>
+<article class="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
+<div class="flex flex-col gap-2">
+<time class="text-sm text-stone font-semibold tracking-wide italic mb-1">Last week</time>
+<p class="text-2xl md:text-3xl font-normal leading-snug text-charcoal-light/80 group-hover:text-black transition-colors duration-500">
+                            Why does the moon follow our car?
+                        </p>
 </div>
-</nav>
-<div class="relative z-20 h-full w-full flex flex-col justify-between pt-16 pb-32 px-8">
-<div class="flex-1 flex w-full">
-<div class="hidden lg:block lg:w-2/3"></div>
-<div class="w-full lg:w-1/3 flex flex-col items-center justify-center lg:items-end lg:justify-start lg:pt-12">
-<div class="glass-panel rounded-2xl p-8 w-full max-w-md flex flex-col items-center relative overflow-hidden transition-all hover:border-amber-400/30">
-<div class="relative size-64 flex items-center justify-center mb-8">
-<div class="absolute inset-0 rounded-full border border-amber-500/10"></div>
-<svg class="absolute inset-0 size-full -rotate-90 transform glow-ring rounded-full" viewBox="0 0 256 256">
-<circle cx="128" cy="128" fill="none" r="116" stroke="#422006" stroke-width="2"></circle>
-<circle class="drop-shadow-[0_0_12px_rgba(255,160,0,0.6)]" cx="128" cy="128" fill="none" r="116" stroke="#FFB74D" stroke-dasharray="728" stroke-dashoffset="182" stroke-linecap="round" stroke-width="3"></circle>
-</svg>
-<div class="flex flex-col items-center z-10">
-<span class="text-7xl font-light text-amber-50 tracking-tighter tabular-nums text-glow" style="font-feature-settings: 'tnum' on, 'lnum' on;">25:00</span>
-<span class="text-primary text-xs uppercase tracking-[0.2em] mt-2 font-bold text-amber-200/80">Focus Mode</span>
+</article>
+<article class="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
+<div class="flex flex-col gap-2">
+<time class="text-sm text-stone font-semibold tracking-wide italic mb-1">Last month</time>
+<p class="text-2xl md:text-3xl font-normal leading-snug text-charcoal-light/70 group-hover:text-black transition-colors duration-500">
+                            Ice cream makes my tummy smile.
+                        </p>
 </div>
+</article>
+<article class="group relative pl-6 border-l-2 border-transparent hover:border-stone/30 transition-all duration-500">
+<div class="flex flex-col gap-2">
+<time class="text-sm text-stone font-semibold tracking-wide italic mb-1">October 12</time>
+<p class="text-2xl md:text-3xl font-normal leading-snug text-charcoal-light/60 group-hover:text-black transition-colors duration-500">
+                            Are dinosaurs hiding in the basement?
+                        </p>
 </div>
-<div class="flex items-center gap-6 w-full justify-center">
-<button class="text-amber-200/60 hover:text-amber-50 transition-colors p-2 rounded-full hover:bg-amber-500/10">
-<span class="material-symbols-outlined text-2xl">replay</span>
-</button>
-<button class="h-14 w-14 rounded-full bg-amber-100 text-amber-900 flex items-center justify-center shadow-[0_0_25px_rgba(255,183,77,0.4)] hover:scale-105 active:scale-95 transition-transform hover:bg-white">
-<span class="material-symbols-outlined text-3xl filled" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-</button>
-<button class="text-amber-200/60 hover:text-amber-50 transition-colors p-2 rounded-full hover:bg-amber-500/10">
-<span class="material-symbols-outlined text-2xl">stop</span>
-</button>
+</article>
 </div>
-<div class="flex bg-black/20 rounded-lg p-1 mt-8 w-full">
-<button class="flex-1 py-2 text-xs font-bold text-amber-950 bg-amber-100/90 rounded shadow-sm">Focus</button>
-<button class="flex-1 py-2 text-xs font-semibold text-amber-200/60 hover:text-amber-100 transition-colors">Short</button>
-<button class="flex-1 py-2 text-xs font-semibold text-amber-200/60 hover:text-amber-100 transition-colors">Long</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="fixed bottom-0 left-0 right-0 z-40 glass-panel-deep px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-8 h-auto md:h-28 shadow-2xl">
-<div class="hidden md:flex items-center gap-4 w-64 shrink-0">
-<div class="relative size-14 rounded-lg overflow-hidden bg-amber-900/20 shadow-inner group cursor-pointer border border-amber-500/20">
-<img alt="Album art" class="object-cover w-full h-full opacity-90 group-hover:opacity-100 transition-opacity sepia-[.3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9gvKgX5ZCwKa8RJBtFhlK4uG6GSCPyTKZy9LWI01zOZpSAz-ShnRB34fDaXCy7NPOz9ZTFR59o-Xb_OPmXcCgtFFWJnzBEUhHB9gH9pMLdwIW0vrS6ZWiF8LvYqUuNspbWEA1as9TSNevPgf7ksWxpmhISsBiox0EkYzlbPAsbf0BTep91I8quRuuTfeGZorrCdwzBvBOR5mqQMByXaj_Zjh_SXPKR6azHG5dckqYPE4ZmBgoS4wJE5JmTs_6fSYqS8s05eBJ3FA"/>
-<div class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-white text-xl">open_in_full</span>
-</div>
-</div>
-<div class="flex flex-col">
-<h3 class="text-amber-50 text-sm font-bold leading-tight">Golden Hour Mix</h3>
-<p class="text-xs text-primary/80 mt-1 font-medium">Warm Vibes</p>
-</div>
-</div>
-<div class="flex-1 w-full flex items-center justify-center gap-4 md:gap-8 overflow-x-auto pb-2 md:pb-0 px-4 scrollbar-hide">
-<div class="flex flex-col items-center gap-2 min-w-[80px] group">
-<div class="flex items-center gap-2 mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-lg text-amber-300">water_drop</span>
-<span class="text-[10px] uppercase tracking-wider font-bold text-amber-100">Rain</span>
-</div>
-<input class="w-32 h-1 bg-amber-900/30 rounded-lg appearance-none cursor-pointer accent-amber-400 hover:bg-amber-900/50 transition-colors" max="100" min="0" type="range" value="75"/>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[80px] group">
-<div class="flex items-center gap-2 mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-lg text-orange-300">storefront</span>
-<span class="text-[10px] uppercase tracking-wider font-bold text-orange-100">Cafe</span>
-</div>
-<input class="w-32 h-1 bg-amber-900/30 rounded-lg appearance-none cursor-pointer accent-orange-400 hover:bg-amber-900/50 transition-colors" max="100" min="0" type="range" value="30"/>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[80px] group">
-<div class="flex items-center gap-2 mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-lg text-red-300">local_fire_department</span>
-<span class="text-[10px] uppercase tracking-wider font-bold text-red-100">Fire</span>
-</div>
-<input class="w-32 h-1 bg-amber-900/30 rounded-lg appearance-none cursor-pointer accent-red-400 hover:bg-amber-900/50 transition-colors" max="100" min="0" type="range" value="45"/>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[80px] group">
-<div class="flex items-center gap-2 mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-lg text-yellow-200">album</span>
-<span class="text-[10px] uppercase tracking-wider font-bold text-yellow-100">Vinyl</span>
-</div>
-<input class="w-32 h-1 bg-amber-900/30 rounded-lg appearance-none cursor-pointer accent-yellow-300 hover:bg-amber-900/50 transition-colors" max="100" min="0" type="range" value="45"/>
-</div>
-<div class="flex flex-col items-center gap-2 min-w-[80px] group">
-<div class="flex items-center gap-2 mb-1 opacity-60 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-lg text-lime-300">forest</span>
-<span class="text-[10px] uppercase tracking-wider font-bold text-lime-100">Nature</span>
-</div>
-<input class="w-32 h-1 bg-amber-900/30 rounded-lg appearance-none cursor-pointer accent-lime-400 hover:bg-amber-900/50 transition-colors" max="100" min="0" type="range" value="10"/>
-</div>
-</div>
-<div class="flex items-center gap-4 w-64 justify-end shrink-0 border-l border-amber-500/10 pl-6 h-12">
-<button class="text-amber-200/50 hover:text-amber-100 transition-colors">
-<span class="material-symbols-outlined">tune</span>
-</button>
-<div class="flex items-center gap-2 group">
-<span class="material-symbols-outlined text-amber-200/50 group-hover:text-amber-100 text-xl">volume_up</span>
-<input class="w-20 h-1 bg-amber-900/30 rounded-lg appearance-none cursor-pointer accent-amber-100" max="100" min="0" type="range" value="80"/>
-</div>
-<button class="text-amber-200/50 hover:text-amber-100 transition-colors ml-2">
-<span class="material-symbols-outlined">fullscreen</span>
-</button>
-</div>
+<div class="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F0EAD6] to-transparent pointer-events-none"></div>
+</main>
 </div>
 
 </body></html>

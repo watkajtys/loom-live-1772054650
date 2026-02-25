@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Echo - Paper &amp; Ink Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&amp;family=Prata&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "ink": "#000000",
+                        "paper": "#ffffff",
+                        "ink-light": "#404040", 
+                    },
+                    fontFamily: {
+                        "serif": ["Playfair Display", "Georgia", "serif"],
+                        "serif-display": ["Prata", "serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #000;
+        }
+        .monastic-input::placeholder {
+            color: #000;
+            opacity: 0.3;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .monastic-input:focus::placeholder {
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }*:focus-visible {
+            outline: 2px solid black;
+            outline-offset: 4px;
+        }
+        .monastic-input:focus {
+            outline: none;
+        }::selection {
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-paper font-serif text-ink min-h-screen antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col items-center pt-24 pb-32">
+<main class="w-full max-w-3xl px-8 flex flex-col gap-16">
+<div class="w-full border-b-4 border-black pb-8">
+<textarea autofocus="" class="monastic-input w-full bg-transparent border-none text-5xl md:text-6xl lg:text-7xl font-black text-ink focus:ring-0 resize-none p-0 leading-[0.9] outline-none placeholder:text-ink/30 tracking-tight" placeholder="What did they say today?" rows="1" style="min-height: 2.5em;"></textarea>
+<div class="mt-6 text-sm font-bold text-ink tracking-widest uppercase">Press Enter to capture</div>
+</div>
+<div class="flex flex-col gap-16 mt-4">
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm font-bold text-ink tracking-widest uppercase border-l-4 border-black pl-3">Today</time>
+<p class="text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-ink-light transition-colors duration-300">
+                            I want to be a cloud when I grow up so I can hug the sky.
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm font-bold text-ink tracking-widest uppercase border-l-4 border-black pl-3">Yesterday</time>
+<p class="text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-ink-light transition-colors duration-300">
+                            Do stars get sleepy?
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm font-bold text-ink tracking-widest uppercase border-l-4 border-black pl-3">2 days ago</time>
+<p class="text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-ink-light transition-colors duration-300">
+                            My shadow is my best friend because he follows me everywhere.
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm font-bold text-ink tracking-widest uppercase border-l-4 border-black pl-3">Last week</time>
+<p class="text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-ink-light transition-colors duration-300">
+                            Why does the moon follow our car?
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm font-bold text-ink tracking-widest uppercase border-l-4 border-black pl-3">Last month</time>
+<p class="text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-ink-light transition-colors duration-300">
+                            Ice cream makes my tummy smile.
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm font-bold text-ink tracking-widest uppercase border-l-4 border-black pl-3">October 12</time>
+<p class="text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-ink-light transition-colors duration-300">
+                            Are dinosaurs hiding in the basement?
+                        </p>
+</div>
+</article>
+</div>
+</main>
+</div>
+
+</body></html>

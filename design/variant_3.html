@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Echo - Dusk Violet Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "dusk-bg": "#dedce8","plum-dark": "#2d1b2e","plum-dim": "#5e4b5f","plum-light": "#8a768b",},
+                    fontFamily: {
+                        "serif": ["Cormorant Garamond", "serif"]
+                    },
+                    boxShadow: {
+                        "ambient": "0 0 40px -5px rgba(100, 50, 100, 0.15), 0 0 15px -3px rgba(100, 50, 100, 0.1)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #8a768b;
+            border-radius: 20px;
+        }
+        .monastic-input::placeholder {
+            color: #8a768b;
+            opacity: 0.6;
+            font-style: italic;
+            font-weight: 300;
+        }
+        .monastic-input:focus::placeholder {
+            opacity: 0.3;
+            transition: opacity 0.5s ease;
+        }.hazy-bg {
+            background: radial-gradient(circle at 50% 0%, #eceaf5 0%, #dedce8 80%);
+        }
+        .ambient-glow {
+            text-shadow: 0 0 20px rgba(120, 80, 130, 0.15);
+        }
+    </style>
+</head>
+<body class="hazy-bg font-serif text-plum-dark min-h-screen selection:bg-plum-dark selection:text-white antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col items-center pt-24 pb-32">
+<main class="w-full max-w-3xl px-8 flex flex-col gap-20">
+<div class="w-full relative group">
+<div class="absolute inset-0 bg-white/20 blur-3xl rounded-full opacity-0 group-focus-within:opacity-100 transition-opacity duration-1000 -z-10"></div>
+<textarea autofocus="" class="monastic-input ambient-glow w-full bg-transparent border-none text-5xl md:text-6xl lg:text-7xl font-normal text-plum-dark focus:ring-0 resize-none p-0 leading-tight outline-none placeholder:text-plum-light" placeholder="What did they say today?" rows="1" style="min-height: 1.5em;"></textarea>
+<div class="mt-6 text-sm text-plum-dim tracking-widest uppercase opacity-50 font-medium">Press Enter to capture</div>
+</div>
+<div class="flex flex-col gap-14 mt-4">
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm text-plum-light font-medium tracking-[0.2em] uppercase opacity-60 mb-1">Today</time>
+<p class="text-3xl md:text-4xl font-light leading-snug text-plum-dark/90 group-hover:text-plum-dark transition-colors duration-700 italic">
+                            I want to be a cloud when I grow up so I can hug the sky.
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm text-plum-light font-medium tracking-[0.2em] uppercase opacity-50 mb-1">Yesterday</time>
+<p class="text-3xl md:text-4xl font-light leading-snug text-plum-dark/80 group-hover:text-plum-dark transition-colors duration-700 italic">
+                            Do stars get sleepy?
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm text-plum-light font-medium tracking-[0.2em] uppercase opacity-40 mb-1">2 days ago</time>
+<p class="text-3xl md:text-4xl font-light leading-snug text-plum-dark/70 group-hover:text-plum-dark transition-colors duration-700 italic">
+                            My shadow is my best friend because he follows me everywhere.
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm text-plum-light font-medium tracking-[0.2em] uppercase opacity-30 mb-1">Last week</time>
+<p class="text-3xl md:text-4xl font-light leading-snug text-plum-dark/60 group-hover:text-plum-dark transition-colors duration-700 italic">
+                            Why does the moon follow our car?
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm text-plum-light font-medium tracking-[0.2em] uppercase opacity-30 mb-1">Last month</time>
+<p class="text-3xl md:text-4xl font-light leading-snug text-plum-dark/50 group-hover:text-plum-dark transition-colors duration-700 italic">
+                            Ice cream makes my tummy smile.
+                        </p>
+</div>
+</article>
+<article class="group">
+<div class="flex flex-col gap-3">
+<time class="text-sm text-plum-light font-medium tracking-[0.2em] uppercase opacity-20 mb-1">October 12</time>
+<p class="text-3xl md:text-4xl font-light leading-snug text-plum-dark/40 group-hover:text-plum-dark transition-colors duration-700 italic">
+                            Are dinosaurs hiding in the basement?
+                        </p>
+</div>
+</article>
+</div>
+<div class="fixed bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#dedce8] to-transparent pointer-events-none"></div>
+</main>
+</div>
+
+</body></html>
