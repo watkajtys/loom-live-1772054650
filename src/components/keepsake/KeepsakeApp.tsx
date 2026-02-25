@@ -71,11 +71,11 @@ export default function KeepsakeApp() {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-warm-parchment bg-[image:var(--background-image-paper-texture)] font-serif text-charcoal-ink antialiased selection:bg-faded-sand selection:text-charcoal-ink flex flex-col items-center">
       <main className="w-full max-w-xl mx-auto px-6 py-24 flex flex-col gap-12">
-        <div className="w-full relative flex flex-col gap-8 items-center">
+        <div className="w-full relative flex flex-col gap-8 items-start">
           <textarea
             ref={textareaRef}
             autoFocus
-            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none text-center placeholder:text-center"
+            className="w-full bg-transparent border-none text-4xl md:text-5xl font-normal leading-tight text-charcoal-ink placeholder:text-charcoal-ink/30 placeholder:italic placeholder:font-serif focus:ring-0 resize-none p-0 outline-none"
             placeholder="What did they say today?"
             rows={1}
             style={{ minHeight: '3em' }}
@@ -84,10 +84,10 @@ export default function KeepsakeApp() {
             onKeyDown={handleKeyDown}
           />
           
-          <div className="flex flex-col items-center gap-6 w-full">
+          <div className="flex flex-col items-start gap-6 w-full">
             <div className="text-xs tracking-widest uppercase font-serif italic text-charcoal-ink/50 flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm font-light">west</span>
               <span>Press Enter to capture</span>
-              <span className="material-symbols-outlined text-sm font-light">keyboard_return</span>
             </div>
             
             <div className="w-full h-px bg-charcoal-ink/10"></div>
@@ -96,7 +96,7 @@ export default function KeepsakeApp() {
 
         <div className="flex flex-col gap-12" data-testid="quote-feed">
           {quotes.map((quote) => (
-            <article key={quote.id} className="group flex flex-col gap-2 items-center text-center">
+            <article key={quote.id} className="group flex flex-col gap-2 items-start text-left">
               <time className="text-sm text-charcoal-ink/60 font-serif italic">
                 {getRelativeTime(quote.timestamp)}
               </time>

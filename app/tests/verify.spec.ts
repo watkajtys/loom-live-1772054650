@@ -15,7 +15,7 @@ test('Keepsake App Flow Verification', async ({ page }) => {
   
   // Verify return icon (by checking the material icon text)
   const returnIcon = page.locator('span.material-symbols-outlined');
-  await expect(returnIcon).toContainText('keyboard_return');
+  await expect(returnIcon).toContainText('west');
 
   // 3. They type: "I don't want to wear the blue socks, they are too spicy."
   const quote = "I don't want to wear the blue socks, they are too spicy.";
